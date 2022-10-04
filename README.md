@@ -8,5 +8,5 @@ sudo apt upgrade
 sudo apt install nodejs npm
 sudo apt install git
 git clone https://github.com/KyojiUmemura/SimpleWebStreaming.git
-cd SimpleWebStreaming.git
+cd SimpleWebStreaming
 sh Run.sh &
