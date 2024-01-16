@@ -19,45 +19,45 @@
     </div> -->
 
     <div class=".status-grid">
-      <form>
+      <form name="playerSTRForm">
         <label for="textInput">STR</label>
-        <input type="number" id="player-str" name="playerSTR">
+        <input type="number" id="player-str" name="playerSTRInput">
       </form>
-      <form>
+      <form name="playerCONForm">
         <label for="textInput">CON</label>
-        <input type="number" id="player-con" name="playerCON">
+        <input type="number" id="player-con" name="playerCONInput">
       </form>
-      <form>
+      <form name="playerSIZForm">
         <label for="textInput">SIZ</label>
-        <input type="number" id="player-siz" name="playerSIZ" oninput="changeStringSize(this.value, 'player-icon')">
+        <input type="number" id="player-siz" name="playerSIZInput" oninput="changeStringSize(this.value, 'player-icon')">
       </form>
-      <form>
+      <form name="playerDEXForm">
         <label for="textInput">DEX</label>
-        <input type="number" id="player-dex" name="playerDEX">
+        <input type="number" id="player-dex" name="playerDEXInput">
       </form>
-      <form>
+      <form name="playerPunchForm">
         <label for="textInput">パンチ</label>
-        <input type="number" id="player-punch" name="playerPunch">
+        <input type="number" id="player-punch" name="playerPunchInput">
       </form>
-      <form>
+      <form name="enemySTRForm">
         <label for="textInput">STR</label>
-        <input type="number" id="enemy-str" name="enemySTR">
+        <input type="number" id="enemy-str" name="enemySTRInput">
       </form>
-      <form>
+      <form name="enemyCONForm">
         <label for="textInput">CON</label>
-        <input type="number" id="enemy-con" name="enemyCON">
+        <input type="number" id="enemy-con" name="enemyCONInput">
       </form>
-      <form>
+      <form name="enemySIZForm">
         <label for="textInput">SIZ</label>
-        <input type="number" id="enemy-siz" name="enemySIZ" oninput="changeStringSize(this.value, 'enemy-icon')">
+        <input type="number" id="enemy-siz" name="enemySIZInput" oninput="changeStringSize(this.value, 'enemy-icon')">
       </form>
-      <form>
+      <form name="enemyDEXForm">
         <label for="textInput">DEX</label>
-        <input type="number" id="enemy-dex" name="enemyDEX">
+        <input type="number" id="enemy-dex" name="enemyDEXInput">
       </form>
-      <form>
+      <form name="enemyPunchForm">
         <label for="textInput">パンチ</label>
-        <input type="number" id="enemy-punch" name="enemyPunch">
+        <input type="number" id="enemy-punch" name="enemyPunchInput">
       </form>
     </div>
     <button id="generate-bottom" onclick="generatePlayer()">Random generate</button>

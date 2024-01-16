@@ -47,10 +47,10 @@ function generateEnemy(){
     let dex = document.getElementById('enemy-dex')
     let punch = document.getElementById('enemy-punch')
     str.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
-    str.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
-    str.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
-    str.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
-    str.value = getDiceNumber(25,90) // 初期値から最大値まで
+    con.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
+    siz.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
+    dex.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
+    punch.value = getDiceNumber(25,90) // 初期値から最大値まで
 }
 
 // スタートボタンを押したときのゲーム開始処理
@@ -65,21 +65,21 @@ function gameStart(){
 }
 
 function settingPlayerStatus(){
-    playerStats.str = document.forms.playerSTR
-    playerStats.con = document.forms.playerCON
-    playerStats.siz = document.forms.playerSIZ
-    playerStats.dex = document.forms.playerDEX
-    playerStats.punch = document.forms.playerPunch
+    playerStats.str = document.forms['playerSTRForm'].element['playerSTRInput'].value
+    playerStats.con = document.forms['playerCONForm'].element['playerCONInput'].value
+    playerStats.siz = document.forms['playerSIZForm'].element['playerSIZInput'].value
+    playerStats.dex = document.forms['playerDEXForm'].element['playerDEXInput'].value
+    playerStats.punch = document.forms['playerPunchForm'].element['playerPunchInput'].value
     playerStats.hp = (playerStats.con+playerStats.siz)/2
     playerStats.damageBonus = getStatusDamageBonus(playerStats.str,playerStats.siz)
 }
 
 function settingEnemyStatus(){
-    enemyStats.str = document.forms.enemySTR
-    enemyStats.con = document.forms.enemyCON
-    enemyStats.siz = document.forms.enemySIZ
-    enemyStats.dex = document.forms.enemyDEX
-    enemyStats.punch = document.forms.enemyPunch
+    enemyStats.str = document.forms['enemySTRForm'].element['enemySTRInput'].value
+    enemyStats.con = document.forms['enemyCONForm'].element['enemyCONInput'].value
+    enemyStats.siz = document.forms['enemySIZForm'].element['enemySIZInput'].value
+    enemyStats.dex = document.forms['enemyDEXForm'].element['enemyDEXInput'].value
+    enemyStats.punch = document.forms['enemyPunchForm'].element['enemyPunchInput'].value
     enemyStats.hp = (enemyStats.con+enemyStats.siz)/2
     enemyStats.damageBonus = getStatusDamageBonus(enemyStats.str,enemyStats.siz)
 }
