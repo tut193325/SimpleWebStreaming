@@ -12,6 +12,11 @@
 // you can define function, before the page is read. 
 // alert('page is about to be read.'); 
 
+let playerStats = {};
+let enemyStats = {};
+
+
+// ----------------セットアップのための関数----------------
 // 任意のIDの文字の大きさを変える
 function changeStringSize(value, stringId) {
     const targetString = document.getElementById(stringId);
@@ -21,22 +26,105 @@ function changeStringSize(value, stringId) {
 }
 
 function gameStart(){
-    // settingPlayerStatus()
-    // settingEnemyStatus()
-    // logMessage("Buttle start!")
+    settingPlayerStatus()
+    settingEnemyStatus()
+    updateHP()
+    logMessage("Buttle start!")
+    if (playerStats.dex<enemyStats.dex){
+        enemyPunch()
+    }
+}
+
+function settingPlayerStatus(){
+    playerStats.str = document.forms.contactForm.playerSTR
+    playerStats.con = document.forms.contactForm.playerCON
+    playerStats.siz = document.forms.contactForm.playerSIZ
+    playerStats.dex = document.forms.contactForm.playerDEX
+    playerStats.punch = document.forms.contactForm.playerPunch
+    playerStats.hp = (playerStats.con+playerStats.siz)/2
+    playerStats.damageBonus = getStatusDamageBonus(playerStats.str,playerStats.siz)
+}
+
+function settingEnemyStatus(){
+    enemyStats.str = document.forms.contactForm.enemySTR
+    enemyStats.con = document.forms.contactForm.enemyCON
+    enemyStats.siz = document.forms.contactForm.enemySIZ
+    enemyStats.dex = document.forms.contactForm.enemyDEX
+    enemyStats.punch = document.forms.contactForm.enemyPunch
+    enemyStats.hp = (enemyStats.con+enemyStats.siz)/2
+    enemyStats.damageBonus = getStatusDamageBonus(enemyStats.str,enemyStats.siz)
+}
+
+function getStatusDamageBonus(str,siz){
+    const power = str+siz
+    const damageBonus = 0
+    switch (true){
+        case (power<13):
+            damageBonus = -6
+            break
+        case (power>=13)&&(power<17):
+            damageBonus = -4
+            break
+        case (power>=17)&&(power<25):
+            damageBonus = 0
+            break
+        case (power>=25)&&(power<33):
+            damageBonus = 4
+            break
+        case (power>=33):
+            damageBonus = 6
+            break
+    }
+    return damageBonus
+}
+
+// ----------------ゲーム進行のための関数----------------
+function updateGame(){
+    enemyPunch()
 }
 
 function playerPunch(){
     const punchDamege = getDiceNumber(1,3) // デフォルトダメージ
-    const damegeBonus = getDiceNumber(1,3) // need to change value
+    const damegeBonus = getDamageBonus(playerStats.damageBonus)
     const damege = punchDamege+damegeBonus
     logMessage("Player punche: ${damage} damage to enemy")
-    // logMessage("Player win!")
+    updateHP()
+    updateGame()
 }
 
 function enemyPunch(){
-    // logMessage("Enamy punche: 1 damage to player")
-    // logMessage("Enemy win!")
+    const punchDamege = getDiceNumber(1,3) // デフォルトダメージ
+    const damegeBonus = getDamageBonus(enemyStats.damageBonus)
+    const damege = punchDamege+damegeBonus
+    logMessage("Enemy punche: ${damage} damage to enemy")
+    updateHP()
+}
+
+function getDamageBonus(statusDamageBonus){
+    const damageBonus = 0
+    switch (true){
+        case (statusDamageBonus<0):
+            damageBonus = getDiceNumber(statusDamageBonus, -1)
+            break
+        case (statusDamageBonus==0):
+            damageBonus = 0
+            break
+        case (statusDamageBonus>0):
+            damageBonus = getDiceNumber(1, statusDamageBonus)
+            break
+    }
+    return damageBonus
+}
+
+function updateHP() {
+    document.getElementById('player-HP').innerText = `HP: ${player.hp}`;
+    document.getElementById('enemy-HP').innerText = `HP: ${enemy.hp}`;
+    if (player.hp<=0){
+        logMessage("Buttle finish!\n Enemy win!")
+    }
+    if (enemy.hp<=0){
+        logMessage("Buttle finish!\n Player win!")
+    }
 }
 
 function logMessage(message){
@@ -50,6 +138,7 @@ function getDiceNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+// ----------------システムのための関数----------------
 function simpleNewSeeker(videoObject, sec) { // It returns a closure for seeking 'music-video'.
     // console.log(sec);
     function seeker() {
@@ -58,7 +147,6 @@ function simpleNewSeeker(videoObject, sec) { // It returns a closure for seeking
     }
     return seeker;  // 'seeker' contains 'sec' and 'videoObject'. 
 }
-
 
 function simpleSetSeekerToElements() {
     // alert('page has been read.'); 
