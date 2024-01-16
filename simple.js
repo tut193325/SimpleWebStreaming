@@ -27,25 +27,25 @@ function changeStringSize(value, stringId) {
 
 // プレイヤーのステータスをランダム生成する
 function generatePlayer(){
-    let str = document.getElementById.playerSTR
-    let con = document.getElementById.playerCON
-    let siz = document.getElementById.playerSIZ
-    let dex = document.getElementById.playerDEX
-    let punch = document.getElementById.playerPunch
+    let str = document.getElementById('player-str')
+    let con = document.getElementById('player-con')
+    let siz = document.getElementById('player-siz')
+    let dex = document.getElementById('player-dex')
+    let punch = document.getElementById('player-punch')
     str.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
-    str.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
-    str.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
-    str.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
-    str.value = getDiceNumber(25,90) // 初期値から最大値まで
+    con.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
+    siz.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
+    dex.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
+    punch.value = getDiceNumber(25,90) // 初期値から最大値まで
 }
 
 // 敵のステータスをランダム生成する
 function generateEnemy(){
-    let str = document.getElementById.enemySTR
-    let con = document.getElementById.enemyCON
-    let siz = document.getElementById.enemySIZ
-    let dex = document.getElementById.enemyDEX
-    let punch = document.getElementById.enemyPunch
+    let str = document.getElementById('enemy-str')
+    let con = document.getElementById('enemy-con')
+    let siz = document.getElementById('enemy-siz')
+    let dex = document.getElementById('enemy-dex')
+    let punch = document.getElementById('enemy-punch')
     str.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
     str.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
     str.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
@@ -65,21 +65,21 @@ function gameStart(){
 }
 
 function settingPlayerStatus(){
-    playerStats.str = document.forms.contactForm.playerSTR
-    playerStats.con = document.forms.contactForm.playerCON
-    playerStats.siz = document.forms.contactForm.playerSIZ
-    playerStats.dex = document.forms.contactForm.playerDEX
-    playerStats.punch = document.forms.contactForm.playerPunch
+    playerStats.str = document.forms.playerSTR
+    playerStats.con = document.forms.playerCON
+    playerStats.siz = document.forms.playerSIZ
+    playerStats.dex = document.forms.playerDEX
+    playerStats.punch = document.forms.playerPunch
     playerStats.hp = (playerStats.con+playerStats.siz)/2
     playerStats.damageBonus = getStatusDamageBonus(playerStats.str,playerStats.siz)
 }
 
 function settingEnemyStatus(){
-    enemyStats.str = document.forms.contactForm.enemySTR
-    enemyStats.con = document.forms.contactForm.enemyCON
-    enemyStats.siz = document.forms.contactForm.enemySIZ
-    enemyStats.dex = document.forms.contactForm.enemyDEX
-    enemyStats.punch = document.forms.contactForm.enemyPunch
+    enemyStats.str = document.forms.enemySTR
+    enemyStats.con = document.forms.enemyCON
+    enemyStats.siz = document.forms.enemySIZ
+    enemyStats.dex = document.forms.enemyDEX
+    enemyStats.punch = document.forms.enemyPunch
     enemyStats.hp = (enemyStats.con+enemyStats.siz)/2
     enemyStats.damageBonus = getStatusDamageBonus(enemyStats.str,enemyStats.siz)
 }
