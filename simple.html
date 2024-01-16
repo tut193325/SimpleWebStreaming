@@ -21,7 +21,7 @@
     <div class=".status-grid">
       <form>
         <label for="textInput">SIZ</label>
-        <input type="number" id="player-size" name="player-size" oninput="updateOutput(this.value, 'player-icon')">
+        <input type="number" id="player-size" name="player-size" oninput="changeStringSize(this.value, 'player-icon')">
       </form>
       <form>
         <label for="textInput">STR</label>
@@ -37,7 +37,7 @@
       </form>
       <form>
         <label for="textInput">SIZ</label>
-        <input type="number" id="enemy-size" name="enemy-size" oninput="updateOutput(this.value, 'enemy-icon')">
+        <input type="number" id="enemy-size" name="enemy-size" oninput="changeStringSize(this.value, 'enemy-icon')">
       </form>
       <form>
         <label for="textInput">STR</label>
@@ -53,9 +53,12 @@
       </form>
     </div>
 
-    <div class=".player-window">
+    <div class=".character-grid">
       <div id="player-icon">Player</div>
+      <div id="player-HP">HP:0</div>
+
       <div id="enemy-icon">Enemy</div>
+      <div id="enemy-HP">HP:0</div>
     </div>
 
 

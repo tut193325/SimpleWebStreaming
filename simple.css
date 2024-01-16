@@ -24,7 +24,7 @@ body{  width:1024px;
 /* ステータス入力のスタイル */
 .status-grid {
 	display: grid;
-	grid-template-columns: repeat(2, 1fr); /* 2列 */
+	grid-template-columns: repeat(4, 1fr); /* 2列，なぜ？ */
 	/* grid-template-rows: repeat(4, auto); 4行 */
 	gap: 20px; /* フォーム間のスペースを設定 */
 }

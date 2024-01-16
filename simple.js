@@ -12,11 +12,12 @@
 // you can define function, before the page is read. 
 // alert('page is about to be read.'); 
 
-function updateOutput(value, iconId) {
-    const outputElement = document.getElementById(iconId);
+// 任意のIDの文字の大きさを変える
+function changeStringSize(value, stringId) {
+    const targetString = document.getElementById(stringId);
     // outputElement.textContent = `結果: ${value}`;
     const fontSize = parseInt(value); // デフォルトのフォントサイズに入力値を加算
-    outputElement.style.fontSize = `${fontSize}px`;
+    targetString.style.fontSize = `${fontSize}px`;
 }
 
 function simpleNewSeeker(videoObject, sec) { // It returns a closure for seeking 'music-video'.
