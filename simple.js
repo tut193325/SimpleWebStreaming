@@ -65,21 +65,21 @@ function gameStart(){
 }
 
 function settingPlayerStatus(){
-    playerStats.str = document.forms['playerSTRForm'].element['playerSTRInput'].value
-    playerStats.con = document.forms['playerCONForm'].element['playerCONInput'].value
-    playerStats.siz = document.forms['playerSIZForm'].element['playerSIZInput'].value
-    playerStats.dex = document.forms['playerDEXForm'].element['playerDEXInput'].value
-    playerStats.punch = document.forms['playerPunchForm'].element['playerPunchInput'].value
+    playerStats.str = document.getElementById('player-str').value
+    playerStats.con = document.getElementById('player-con').value
+    playerStats.siz = document.getElementById('player-siz').value
+    playerStats.dex = document.getElementById('player-dex').value
+    playerStats.punch = document.getElementById('player-punch').value
     playerStats.hp = (playerStats.con+playerStats.siz)/2
     playerStats.damageBonus = getStatusDamageBonus(playerStats.str,playerStats.siz)
 }
 
 function settingEnemyStatus(){
-    enemyStats.str = document.forms['enemySTRForm'].element['enemySTRInput'].value
-    enemyStats.con = document.forms['enemyCONForm'].element['enemyCONInput'].value
-    enemyStats.siz = document.forms['enemySIZForm'].element['enemySIZInput'].value
-    enemyStats.dex = document.forms['enemyDEXForm'].element['enemyDEXInput'].value
-    enemyStats.punch = document.forms['enemyPunchForm'].element['enemyPunchInput'].value
+    enemyStats.str = document.getElementById('enemy-str').value
+    enemyStats.con = document.getElementById('enemy-con').value
+    enemyStats.siz = document.getElementById('enemy-siz').value
+    enemyStats.dex = document.getElementById('enemy-dex').value
+    enemyStats.punch = document.getElementById('enemy-punch').value
     enemyStats.hp = (enemyStats.con+enemyStats.siz)/2
     enemyStats.damageBonus = getStatusDamageBonus(enemyStats.str,enemyStats.siz)
 }
