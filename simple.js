@@ -131,9 +131,9 @@ function playerPunch(){
         var damegeBonus = getDamageBonus(playerStatus.damageBonus)
         var damege = punchDamege+damegeBonus
         enemyStatus.hp = enemyStatus.hp-damege
-        logMessage(`Player punche: ${punchDamege}+${damegeBonus}  damage to enemy`)
+        logMessage(`Player punche   : ${punchDamege}+${damegeBonus} damage to enemy`)
     }else{
-        logMessage("Player punche: Miss!")
+        logMessage("Player punche   : Miss!")
     }
     updateHP()
     if (isGameRunning){
@@ -147,9 +147,9 @@ function enemyPunch(){
         var damegeBonus = getDamageBonus(enemyStatus.damageBonus)
         var damege = punchDamege+damegeBonus
         playerStatus.hp = playerStatus.hp-damege
-        logMessage(`Enemy punche: ${punchDamege}+${damegeBonus} damage to player`)
+        logMessage(`Enemy punche    : ${punchDamege}+${damegeBonus} damage to player`)
     }else{
-        logMessage("Enemy punche: Miss!")
+        logMessage("Enemy punche    : Miss!")
     }
     updateHP()
 }

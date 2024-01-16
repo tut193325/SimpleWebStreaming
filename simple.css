@@ -45,6 +45,11 @@ body{  width:1024px;
 	font-size: 10px;
 }
 
+#log {
+	font-size: 15px;
+	line-height: 60%;
+}
+
 /* #picture-part {
         width:448pt;
 } */
