@@ -103,7 +103,7 @@ function settingEnemyStatus(){
 // プレイヤーの「ステータス」のダメージボーナスを計算する
 function getStatusDamageBonus(str,siz){
     const power = str+siz
-    const damageBonus = 0
+    var damageBonus = 0
     switch (true){
         case (power<13):
             damageBonus = -6
