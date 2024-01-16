@@ -25,12 +25,41 @@ function changeStringSize(value, stringId) {
     targetString.style.fontSize = `${fontSize}px`;
 }
 
+// プレイヤーのステータスをランダム生成する
+function generatePlayer(){
+    let str = document.getElementById.playerSTR
+    let con = document.getElementById.playerCON
+    let siz = document.getElementById.playerSIZ
+    let dex = document.getElementById.playerDEX
+    let punch = document.getElementById.playerPunch
+    str.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
+    str.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
+    str.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
+    str.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
+    str.value = getDiceNumber(25,90) // 初期値から最大値まで
+}
+
+// 敵のステータスをランダム生成する
+function generateEnemy(){
+    let str = document.getElementById.enemySTR
+    let con = document.getElementById.enemyCON
+    let siz = document.getElementById.enemySIZ
+    let dex = document.getElementById.enemyDEX
+    let punch = document.getElementById.enemyPunch
+    str.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
+    str.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
+    str.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
+    str.value = getDiceNumber(1,6)+getDiceNumber(1,6)+getDiceNumber(1,6)
+    str.value = getDiceNumber(25,90) // 初期値から最大値まで
+}
+
+// スタートボタンを押したときのゲーム開始処理
 function gameStart(){
     settingPlayerStatus()
     settingEnemyStatus()
     updateHP()
     logMessage("Buttle start!")
-    if (playerStats.dex<enemyStats.dex){
+    if (playerStats.dex<enemyStats.dex){ // 敵に先行をとられたら先にパンチを打たれる
         enemyPunch()
     }
 }
@@ -55,6 +84,7 @@ function settingEnemyStatus(){
     enemyStats.damageBonus = getStatusDamageBonus(enemyStats.str,enemyStats.siz)
 }
 
+// プレイヤーの「ステータス」のダメージボーナスを計算する
 function getStatusDamageBonus(str,siz){
     const power = str+siz
     const damageBonus = 0
@@ -84,19 +114,29 @@ function updateGame(){
 }
 
 function playerPunch(){
-    const punchDamege = getDiceNumber(1,3) // デフォルトダメージ
-    const damegeBonus = getDamageBonus(playerStats.damageBonus)
-    const damege = punchDamege+damegeBonus
-    logMessage("Player punche: ${damage} damage to enemy")
+    if (getDiceNumber(1,100)<=playerStats.punch){
+        const punchDamege = getDiceNumber(1,3) // デフォルトダメージ
+        const damegeBonus = getDamageBonus(playerStats.damageBonus)
+        const damege = punchDamege+damegeBonus
+        enemyStats.hp = enemyStats.hp-damege
+        logMessage(`Player punche: ${damage} damage to enemy`)
+    }else{
+        logMessage("Player punche: Miss!")
+    }
     updateHP()
     updateGame()
 }
 
 function enemyPunch(){
-    const punchDamege = getDiceNumber(1,3) // デフォルトダメージ
-    const damegeBonus = getDamageBonus(enemyStats.damageBonus)
-    const damege = punchDamege+damegeBonus
-    logMessage("Enemy punche: ${damage} damage to enemy")
+    if (getDiceNumber(1,100)<=enemyStats.punch){
+        const punchDamege = getDiceNumber(1,3) // デフォルトダメージ
+        const damegeBonus = getDamageBonus(enemyStats.damageBonus)
+        const damege = punchDamege+damegeBonus
+        playerStats.hp = playerStats.hp-damege
+        logMessage(`Enemy punche: ${damage} damage to enemy`)
+    }else{
+        logMessage("Enemy punche: Miss!")
+    }
     updateHP()
 }
 
