@@ -59,6 +59,7 @@ function gameStart(){
     settingPlayerStatus()
     logMessage("seted")
     settingEnemyStatus()
+    logMessage("seted2")
     updateHP()
     logMessage("Buttle start!")
     if (playerStats.dex<enemyStats.dex){ // 敵に先行をとられたら先にパンチを打たれる
@@ -71,7 +72,7 @@ function settingPlayerStatus(){
     let str = document.getElementById('player-str')
     logMessage("getlet")
     playerStats.str = str.value
-    logMessage("getvalue")
+    logMessage(`str ${playerStats.str}`)
     let con = document.getElementById('player-con')
     playerStats.con = con.value
     let siz = document.getElementById('player-siz')
