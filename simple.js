@@ -12,8 +12,8 @@
 // you can define function, before the page is read. 
 // alert('page is about to be read.') 
 
-let playerStatus = {}
-let enemyStatus = {}
+let playerStats = {}
+let enemyStats = {}
 
 
 // ----------------セットアップのための関数----------------
@@ -60,39 +60,39 @@ function gameStart(){
     logMessage("seted2")
     updateHP()
     logMessage("Buttle start!")
-    if (playerStatus.dex<enemyStatus.dex){ // 敵に先行をとられたら先にパンチを打たれる
+    if (playerStats.dex<enemyStats.dex){ // 敵に先行をとられたら先にパンチを打たれる
         enemyPunch()
     }
 }
 
 function settingPlayerStatus(){
     let str = document.getElementById('player-str')
-    playerStatus.str = str.value
+    playerStats.str = str.value
     let con = document.getElementById('player-con')
-    playerStatus.con = con.value
+    playerStats.con = con.value
     let siz = document.getElementById('player-siz')
-    playerStatus.siz = siz.value
+    playerStats.siz = siz.value
     let dex = document.getElementById('player-dex')
-    playerStatus.dex = dex.value
+    playerStats.dex = dex.value
     let punch = document.getElementById('player-punch')
-    playerStatus.punch = punch.value
-    playerStatus.hp = (playerStatus.con+playerStatus.siz)/2
-    playerStatus.damageBonus = getStatusDamageBonus(playerStatus.str,playerStatus.siz)
+    playerStats.punch = punch.value
+    playerStats.hp = (playerStats.con+playerStats.siz)/2
+    playerStats.damageBonus = getStatusDamageBonus(playerStats.str,playerStats.siz)
 }
 
 function settingEnemyStatus(){
     let str = document.getElementById('enemy-str')
-    enemyStatus.str = str.value
+    enemyStats.str = str.value
     let con = document.getElementById('enemy-con')
-    enemyStatus.con = con.value
+    enemyStats.con = con.value
     let siz = document.getElementById('enemy-siz')
-    enemyStatus.siz = siz.value
+    enemyStats.siz = siz.value
     let dex = document.getElementById('enemy-dex')
-    enemyStatus.dex = dex.value
+    enemyStats.dex = dex.value
     let punch = document.getElementById('enemy-punch')
-    enemyStatus.punch = punch.value
-    enemyStatus.hp = (enemyStatus.con+enemyStatus.siz)/2
-    enemyStatus.damageBonus = getStatusDamageBonus(enemyStatus.str,enemyStatus.siz)
+    enemyStats.punch = punch.value
+    enemyStats.hp = (enemyStats.con+enemyStats.siz)/2
+    enemyStats.damageBonus = getStatusDamageBonus(enemyStats.str,enemyStats.siz)
 }
 
 // プレイヤーの「ステータス」のダメージボーナスを計算する
@@ -125,11 +125,11 @@ function updateGame(){
 }
 
 function playerPunch(){
-    if (getDiceNumber(1,100)<=playerStatus.punch){
+    if (getDiceNumber(1,100)<=playerStats.punch){
         const punchDamege = getDiceNumber(1,3) // デフォルトダメージ
-        const damegeBonus = getDamageBonus(playerStatus.damageBonus)
+        const damegeBonus = getDamageBonus(playerStats.damageBonus)
         const damege = punchDamege+damegeBonus
-        enemyStatus.hp = enemyStatus.hp-damege
+        enemyStats.hp = enemyStats.hp-damege
         logMessage(`Player punche: ${damage} damage to enemy`)
     }else{
         logMessage("Player punche: Miss!")
@@ -139,11 +139,11 @@ function playerPunch(){
 }
 
 function enemyPunch(){
-    if (getDiceNumber(1,100)<=enemyStatus.punch){
+    if (getDiceNumber(1,100)<=enemyStats.punch){
         const punchDamege = getDiceNumber(1,3) // デフォルトダメージ
-        const damegeBonus = getDamageBonus(enemyStatus.damageBonus)
+        const damegeBonus = getDamageBonus(enemyStats.damageBonus)
         const damege = punchDamege+damegeBonus
-        playerStatus.hp = playerStatus.hp-damege
+        playerStats.hp = playerStats.hp-damege
         logMessage(`Enemy punche: ${damage} damage to enemy`)
     }else{
         logMessage("Enemy punche: Miss!")
