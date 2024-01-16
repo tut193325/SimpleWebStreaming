@@ -12,14 +12,14 @@ body{  width:1024px;
 	align-items:flex-end;
 }
 
-#profile-part {
+/* #profile-part {
 	width:480px;
 	height:450px;
         background-color:#dddddd;
         font-size:141%;
         margin:  4px 4px 4px 4px; 
 	padding: 12px 12px 12px 12px;
-}
+} */
 
 /* ステータス入力のスタイル */
 .status-grid {
@@ -33,6 +33,16 @@ body{  width:1024px;
 .form {
 	border: 1px solid #ccc;
 	padding: 10px;
+}
+
+/* playerのデフォルトのアイコンサイズ */
+#player-icon {
+	font-size: 10px;
+}
+
+/* enemyのデフォルトのアイコンサイズ */
+#enemy-icon {
+	font-size: 10px;
 }
 
 /* #picture-part {

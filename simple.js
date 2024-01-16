@@ -12,6 +12,13 @@
 // you can define function, before the page is read. 
 // alert('page is about to be read.'); 
 
+function updateOutput(value, iconId) {
+    const outputElement = document.getElementById(iconId);
+    // outputElement.textContent = `結果: ${value}`;
+    const fontSize = parseInt(value); // デフォルトのフォントサイズに入力値を加算
+    outputElement.style.fontSize = `${fontSize}px`;
+}
+
 function simpleNewSeeker(videoObject, sec) { // It returns a closure for seeking 'music-video'.
     // console.log(sec);
     function seeker() {
