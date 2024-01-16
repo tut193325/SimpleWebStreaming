@@ -10,19 +10,19 @@
 
 
 // you can define function, before the page is read. 
-// alert('page is about to be read.'); 
+// alert('page is about to be read.') 
 
-let playerStats = {};
-let enemyStats = {};
+let playerStatus = {}
+let enemyStatus = {}
 
 
 // ----------------セットアップのための関数----------------
 // 任意のIDの文字の大きさを変える
 function changeStringSize(value, stringId) {
-    const targetString = document.getElementById(stringId);
-    // outputElement.textContent = `結果: ${value}`;
-    const fontSize = parseInt(value); // デフォルトのフォントサイズに入力値を加算
-    targetString.style.fontSize = `${fontSize}px`;
+    const targetString = document.getElementById(stringId)
+    // outputElement.textContent = `結果: ${value}`
+    const fontSize = parseInt(value) // デフォルトのフォントサイズに入力値を加算
+    targetString.style.fontSize = `${fontSize}px`
 }
 
 // プレイヤーのステータスをランダム生成する
@@ -60,39 +60,39 @@ function gameStart(){
     logMessage("seted2")
     updateHP()
     logMessage("Buttle start!")
-    if (playerStats.dex<enemyStats.dex){ // 敵に先行をとられたら先にパンチを打たれる
+    if (playerStatus.dex<enemyStatus.dex){ // 敵に先行をとられたら先にパンチを打たれる
         enemyPunch()
     }
 }
 
 function settingPlayerStatus(){
     let str = document.getElementById('player-str')
-    playerStats.str = str.value
+    playerStatus.str = str.value
     let con = document.getElementById('player-con')
-    playerStats.con = con.value
+    playerStatus.con = con.value
     let siz = document.getElementById('player-siz')
-    playerStats.siz = siz.value
+    playerStatus.siz = siz.value
     let dex = document.getElementById('player-dex')
-    playerStats.dex = dex.value
+    playerStatus.dex = dex.value
     let punch = document.getElementById('player-punch')
-    playerStats.punch = punch.value
-    playerStats.hp = (playerStats.con+playerStats.siz)/2
-    playerStats.damageBonus = getStatusDamageBonus(playerStats.str,playerStats.siz)
+    playerStatus.punch = punch.value
+    playerStatus.hp = (playerStatus.con+playerStatus.siz)/2
+    playerStatus.damageBonus = getStatusDamageBonus(playerStatus.str,playerStatus.siz)
 }
 
 function settingEnemyStatus(){
     let str = document.getElementById('enemy-str')
-    enemyStats.str = str.value
+    enemyStatus.str = str.value
     let con = document.getElementById('enemy-con')
-    enemyStats.con = con.value
+    enemyStatus.con = con.value
     let siz = document.getElementById('enemy-siz')
-    enemyStats.siz = siz.value
+    enemyStatus.siz = siz.value
     let dex = document.getElementById('enemy-dex')
-    enemyStats.dex = dex.value
+    enemyStatus.dex = dex.value
     let punch = document.getElementById('enemy-punch')
-    enemyStats.punch = punch.value
-    enemyStats.hp = (enemyStats.con+enemyStats.siz)/2
-    enemyStats.damageBonus = getStatusDamageBonus(enemyStats.str,enemyStats.siz)
+    enemyStatus.punch = punch.value
+    enemyStatus.hp = (enemyStatus.con+enemyStatus.siz)/2
+    enemyStatus.damageBonus = getStatusDamageBonus(enemyStatus.str,enemyStatus.siz)
 }
 
 // プレイヤーの「ステータス」のダメージボーナスを計算する
@@ -125,11 +125,11 @@ function updateGame(){
 }
 
 function playerPunch(){
-    if (getDiceNumber(1,100)<=playerStats.punch){
+    if (getDiceNumber(1,100)<=playerStatus.punch){
         const punchDamege = getDiceNumber(1,3) // デフォルトダメージ
-        const damegeBonus = getDamageBonus(playerStats.damageBonus)
+        const damegeBonus = getDamageBonus(playerStatus.damageBonus)
         const damege = punchDamege+damegeBonus
-        enemyStats.hp = enemyStats.hp-damege
+        enemyStatus.hp = enemyStatus.hp-damege
         logMessage(`Player punche: ${damage} damage to enemy`)
     }else{
         logMessage("Player punche: Miss!")
@@ -139,11 +139,11 @@ function playerPunch(){
 }
 
 function enemyPunch(){
-    if (getDiceNumber(1,100)<=enemyStats.punch){
+    if (getDiceNumber(1,100)<=enemyStatus.punch){
         const punchDamege = getDiceNumber(1,3) // デフォルトダメージ
-        const damegeBonus = getDamageBonus(enemyStats.damageBonus)
+        const damegeBonus = getDamageBonus(enemyStatus.damageBonus)
         const damege = punchDamege+damegeBonus
-        playerStats.hp = playerStats.hp-damege
+        playerStatus.hp = playerStatus.hp-damege
         logMessage(`Enemy punche: ${damage} damage to enemy`)
     }else{
         logMessage("Enemy punche: Miss!")
@@ -169,9 +169,9 @@ function getDamageBonus(statusDamageBonus){
 
 function updateHP() {
     logMessage("headfunction")
-    document.getElementById('player-HP').innerText = `HP:${playerStatus.hp}`;
+    document.getElementById('player-HP').innerText = `HP:${playerStatus.hp}`
     logMessage("playerhp")
-    document.getElementById('enemy-HP').innerText = `HP:${enemyStatus.hp}`;
+    document.getElementById('enemy-HP').innerText = `HP:${enemyStatus.hp}`
     logMessage("enemyhp")
     if (player.hp<=0){
         logMessage("Buttle finish!\n Enemy win!")
@@ -184,45 +184,45 @@ function updateHP() {
 }
 
 function logMessage(message){
-    const logDiv = document.getElementById('log');
-    const p = document.createElement('p');
-    p.textContent = message;
-    logDiv.appendChild(p);
+    const logDiv = document.getElementById('log')
+    const p = document.createElement('p')
+    p.textContent = message
+    logDiv.appendChild(p)
 }
 
 function getDiceNumber(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
 // ----------------システムのための関数----------------
 function simpleNewSeeker(videoObject, sec) { // It returns a closure for seeking 'music-video'.
-    // console.log(sec);
+    // console.log(sec)enemy
     function seeker() {
-	videoObject.currentTime = sec;
-	videoObject.play();
+	videoObject.currentTime = sec
+	videoObject.play()
     }
-    return seeker;  // 'seeker' contains 'sec' and 'videoObject'. 
+    return seeker  // 'seeker' contains 'sec' and 'videoObject'. 
 }
 
 function simpleSetSeekerToElements() {
-    // alert('page has been read.'); 
-    var timePattern = /\(([0-9]+):([0-9]+)\)/;  
+    // alert('page has been read.') 
+    var timePattern = /\(([0-9]+):([0-9]+)\)/  
     // Example: '(2:45)' for 2 minutes and 45 second,
-    var listElements = document.getElementsByClassName('simple-chapter');
-    var element;  // object for each 'information'. 
-    var description; // string in the corresponding 'information' object. 
-    var result; // matching result of description
-    var i; // temporal variable 'for' loop.
-    var videoObject = document.getElementById('simple-target');
-    for(i = 0; i< listElements.length; i++ ) { // I know it is old fashon. 
-	element = listElements[i];
+    var listElements = document.getElementsByClassName('simple-chapter')
+    var element  // object for each 'information'. 
+    var description // string in the corresponding 'information' object. 
+    var result // matching result of description
+    var i // temporal variable 'for' loop.
+    var videoObject = document.getElementById('simple-target')
+    for(i = 0 i< listElements.length i++ ) { // I know it is old fashon. 
+	element = listElements[i]
 	// Setting 'onclick' function to seek the video at described position.
-	description = element.innerHTML;
+	description = element.innerHTML
 	if( timePattern.test(description) ) { 
-	    result =timePattern.exec(description);
+	    result =timePattern.exec(description)
 	    // result[1]: minute, result[2]:second  
 	    element.onclick = 
-		simpleNewSeeker(videoObject, Number(result[1])*60+Number(result[2]));
+		simpleNewSeeker(videoObject, Number(result[1])*60+Number(result[2]))
 	}
     }
 }
@@ -230,6 +230,6 @@ function simpleSetSeekerToElements() {
 
 // setting handlers is possible only after the page is read. 
 if(window.onload != null) { alert('onload hander is already set.') } 
-else { window.onload = simpleSetSeekerToElements; }
+else { window.onload = simpleSetSeekerToElements }
 
 
