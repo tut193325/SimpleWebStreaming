@@ -55,9 +55,7 @@ function generateEnemy(){
 
 // スタートボタンを押したときのゲーム開始処理
 function gameStart(){
-    logMessage("gamestart")
     settingPlayerStatus()
-    logMessage("seted")
     settingEnemyStatus()
     logMessage("seted2")
     updateHP()
@@ -78,11 +76,8 @@ function settingPlayerStatus(){
     playerStats.dex = dex.value
     let punch = document.getElementById('player-punch')
     playerStats.punch = punch.value
-    logMessage("punchset")
     playerStats.hp = (playerStats.con+playerStats.siz)/2
-    logMessage("hpset")
     playerStats.damageBonus = getStatusDamageBonus(playerStats.str,playerStats.siz)
-    logMessage("dameboseted")
 }
 
 function settingEnemyStatus(){
@@ -173,8 +168,8 @@ function getDamageBonus(statusDamageBonus){
 }
 
 function updateHP() {
-    document.getElementById('player-HP').innerText = `HP: ${player.hp}`;
-    document.getElementById('enemy-HP').innerText = `HP: ${enemy.hp}`;
+    document.getElementById('player-HP').innerText = `HP:${playerStatus.hp}`;
+    document.getElementById('enemy-HP').innerText = `HP:${enemyStatus.hp}`;
     if (player.hp<=0){
         logMessage("Buttle finish!\n Enemy win!")
     }
