@@ -68,11 +68,8 @@ function gameStart(){
 }
 
 function settingPlayerStatus(){
-    logMessage("settingstart")
     let str = document.getElementById('player-str')
-    logMessage("getlet")
     playerStats.str = str.value
-    logMessage(`str ${playerStats.str}`)
     let con = document.getElementById('player-con')
     playerStats.con = con.value
     let siz = document.getElementById('player-siz')
@@ -81,8 +78,11 @@ function settingPlayerStatus(){
     playerStats.dex = dex.value
     let punch = document.getElementById('player-punch')
     playerStats.punch = punch.value
+    logMessage("punchset")
     playerStats.hp = (playerStats.con+playerStats.siz)/2
+    logMessage("hpset")
     playerStats.damageBonus = getStatusDamageBonus(playerStats.str,playerStats.siz)
+    logMessage("dameboseted")
 }
 
 function settingEnemyStatus(){
