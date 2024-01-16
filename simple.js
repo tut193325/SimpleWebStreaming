@@ -55,7 +55,9 @@ function generateEnemy(){
 
 // スタートボタンを押したときのゲーム開始処理
 function gameStart(){
+    logMessage("gamestart")
     settingPlayerStatus()
+    logMessage("seted")
     settingEnemyStatus()
     updateHP()
     logMessage("Buttle start!")
@@ -65,8 +67,11 @@ function gameStart(){
 }
 
 function settingPlayerStatus(){
+    logMessage("settingstart")
     let str = document.getElementById('player-str')
+    logMessage("getlet")
     playerStats.str = str.value
+    logMessage("getvalue")
     let con = document.getElementById('player-con')
     playerStats.con = con.value
     let siz = document.getElementById('player-siz')
