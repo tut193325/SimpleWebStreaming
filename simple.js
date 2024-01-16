@@ -27,7 +27,10 @@ function gameStart(){
 }
 
 function playerPunch(){
-    // logMessage("Player punche: 1 damage to enemy")
+    const punchDamege = getDiceNumber(1,3) // デフォルトダメージ
+    const damegeBonus = getDiceNumber(1,3) // need to change value
+    const damege = punchDamege+damegeBonus
+    logMessage("Player punche: ${damage} damage to enemy")
     // logMessage("Player win!")
 }
 
@@ -37,7 +40,14 @@ function enemyPunch(){
 }
 
 function logMessage(message){
+    const logDiv = document.getElementById('log');
+    const p = document.createElement('p');
+    p.textContent = message;
+    logDiv.appendChild(p);
+}
 
+function getDiceNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function simpleNewSeeker(videoObject, sec) { // It returns a closure for seeking 'music-video'.
