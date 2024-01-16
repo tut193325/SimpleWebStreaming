@@ -168,14 +168,19 @@ function getDamageBonus(statusDamageBonus){
 }
 
 function updateHP() {
+    logMessage("headfunction")
     document.getElementById('player-HP').innerText = `HP:${playerStatus.hp}`;
+    logMessage("playerhp")
     document.getElementById('enemy-HP').innerText = `HP:${enemyStatus.hp}`;
+    logMessage("enemyhp")
     if (player.hp<=0){
         logMessage("Buttle finish!\n Enemy win!")
     }
+    logMessage("playerhptest")
     if (enemy.hp<=0){
         logMessage("Buttle finish!\n Player win!")
     }
+    logMessage("enemyhptest")
 }
 
 function logMessage(message){
