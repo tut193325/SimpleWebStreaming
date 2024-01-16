@@ -3,7 +3,7 @@
 <html>
   <head>
   <meta charset="utf-8">
-  <title> my favorite music</title>
+  <title> TRPG buttle simulator</title>
   <!-- This html is one example of music video page -->
   <link rel="stylesheet" type="text/css" href="simple.css">
   <!-- simple.js uses ID:"simple-target", and CLASS:"simple-target" -->
@@ -19,6 +19,7 @@
     </div> -->
     <div id="UI">
       <div class=".status-grid">
+        Player status
         <form name="playerSTRForm">
           <label for="textInput">STR</label>
           <input type="number" id="player-str" name="playerSTRInput">
@@ -39,6 +40,9 @@
           <label for="textInput">パンチ</label>
           <input type="number" id="player-punch" name="playerPunchInput">
         </form>
+        <button id="generate-bottom" onclick="generatePlayer()">Random generate</button>
+        <br><br>
+        Enemy status
         <form name="enemySTRForm">
           <label for="textInput">STR</label>
           <input type="number" id="enemy-str" name="enemySTRInput">
@@ -60,18 +64,18 @@
           <input type="number" id="enemy-punch" name="enemyPunchInput">
         </form>
       </div>
-      <button id="generate-bottom" onclick="generatePlayer()">Random generate</button>
       <button id="generate-bottom" onclick="generateEnemy()">Random generate</button>
+      <br><br><br>
       <button id="start-bottom" onclick="gameStart()">Game start!</button>
-
+      <br><br><br>
       <div class=".character-grid">
         <div id="player-icon">Player</div>
         <div id="player-HP">HP:0</div>
         <button id="player-punch-bottom" onclick="playerPunch()">Punch!</button>
+        <br>
         <div id="enemy-icon">Enemy</div>
         <div id="enemy-HP">HP:0</div>
       </div>
-
       <div id="log"></div>
     </div>
 

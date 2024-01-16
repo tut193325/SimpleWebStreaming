@@ -20,7 +20,7 @@ function serviceClient(request, response) {
     
     switch(urlInformation.pathname) {
     case '/':
-	fs.readFile('./readMe.html', 'UTF-8',
+	fs.readFile('./simple.html', 'UTF-8',
 		function(error, data) {
 		    response.writeHead(200, {'Content-Type' : 'text/html'});
 		    response.write(data);
