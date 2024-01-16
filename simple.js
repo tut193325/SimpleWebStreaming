@@ -65,21 +65,31 @@ function gameStart(){
 }
 
 function settingPlayerStatus(){
-    playerStats.str = document.getElementById('player-str').value
-    playerStats.con = document.getElementById('player-con').value
-    playerStats.siz = document.getElementById('player-siz').value
-    playerStats.dex = document.getElementById('player-dex').value
-    playerStats.punch = document.getElementById('player-punch').value
+    let str = document.getElementById('player-str')
+    playerStats.str = str.value
+    let con = document.getElementById('player-con')
+    playerStats.con = con.value
+    let siz = document.getElementById('player-siz')
+    playerStats.siz = siz.value
+    let dex = document.getElementById('player-dex')
+    playerStats.dex = dex.value
+    let punch = document.getElementById('player-punch')
+    playerStats.punch = punch.value
     playerStats.hp = (playerStats.con+playerStats.siz)/2
     playerStats.damageBonus = getStatusDamageBonus(playerStats.str,playerStats.siz)
 }
 
 function settingEnemyStatus(){
-    enemyStats.str = document.getElementById('enemy-str').value
-    enemyStats.con = document.getElementById('enemy-con').value
-    enemyStats.siz = document.getElementById('enemy-siz').value
-    enemyStats.dex = document.getElementById('enemy-dex').value
-    enemyStats.punch = document.getElementById('enemy-punch').value
+    let str = document.getElementById('enemy-str')
+    enemyStats.str = str.value
+    let con = document.getElementById('enemy-con')
+    enemyStats.con = con.value
+    let siz = document.getElementById('enemy-siz')
+    enemyStats.siz = siz.value
+    let dex = document.getElementById('enemy-dex')
+    enemyStats.dex = dex.value
+    let punch = document.getElementById('enemy-punch')
+    enemyStats.punch = punch.value
     enemyStats.hp = (enemyStats.con+enemyStats.siz)/2
     enemyStats.damageBonus = getStatusDamageBonus(enemyStats.str,enemyStats.siz)
 }
