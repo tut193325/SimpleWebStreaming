@@ -20,6 +20,26 @@ function changeStringSize(value, stringId) {
     targetString.style.fontSize = `${fontSize}px`;
 }
 
+function gameStart(){
+    // settingPlayerStatus()
+    // settingEnemyStatus()
+    // logMessage("Buttle start!")
+}
+
+function playerPunch(){
+    // logMessage("Player punche: 1 damage to enemy")
+    // logMessage("Player win!")
+}
+
+function enemyPunch(){
+    // logMessage("Enamy punche: 1 damage to player")
+    // logMessage("Enemy win!")
+}
+
+function logMessage(message){
+
+}
+
 function simpleNewSeeker(videoObject, sec) { // It returns a closure for seeking 'music-video'.
     // console.log(sec);
     function seeker() {
