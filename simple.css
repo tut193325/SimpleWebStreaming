@@ -21,6 +21,20 @@ body{  width:1024px;
 	padding: 12px 12px 12px 12px;
 }
 
+/* ステータス入力のスタイル */
+.status-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr); /* 2列 */
+	grid-template-rows: repeat(5, auto); /* 5行 */
+	gap: 20px; /* フォーム間のスペースを設定 */
+}
+
+/* フォームのスタイル */
+.form {
+	border: 1px solid #ccc;
+	padding: 10px;
+}
+
 /* #picture-part {
         width:448pt;
 } */
